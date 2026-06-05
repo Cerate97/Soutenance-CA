@@ -670,15 +670,6 @@ Optimisation du pilotage de la performance par la Data & la Business Intelligenc
     )
 
 
-    html(
-        """
-<div class="hero-subtitle">
-    Une application Streamlit intégrée à Snowflake pour accélérer,
-    fiabiliser et tracer le traitement des données commerciales partenaires.
-</div>
-        """
-    )
-
     col1, col2 = st.columns(2)
 
     with col1:
