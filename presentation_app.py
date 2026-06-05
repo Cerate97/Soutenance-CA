@@ -857,7 +857,7 @@ def page_accueil():
     html(
         """
 <div class="hero-title">
-Optimisation du pilotage de la performance par la Data & la Business Intelligence
+Optimisation du pilotage de la performance par la Data & la Business Intelligence:
 <br>
 <span class="gradient-text">Automatisation du matching client des Tracings US chez Thuasne</span>
 </div>
