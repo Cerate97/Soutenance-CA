@@ -7,7 +7,6 @@ import streamlit as st
 # =====================================================
 st.set_page_config(
     page_title="Soutenance - Rapport de stage",
-    page_icon="🎓",
     layout="wide"
 )
 
@@ -97,13 +96,13 @@ st.markdown(
     }}
 
     .block-container {{
-        padding-top: 3.2rem !important;
+        padding-top: 3.1rem !important;
         padding-bottom: 2rem !important;
         max-width: 1180px;
     }}
 
     /* =====================================================
-       SIDEBAR - nouvelle harmonie visuelle
+       Sidebar
     ===================================================== */
     section[data-testid="stSidebar"] {{
         background:
@@ -115,19 +114,9 @@ st.markdown(
     }}
 
     section[data-testid="stSidebar"] > div {{
-        padding-top: 1.3rem;
+        padding-top: 1.4rem;
     }}
 
-    /* Logo dans une petite carte blanche */
-    section[data-testid="stSidebar"] img {{
-        background: rgba(255,255,255,0.96);
-        border-radius: 16px;
-        padding: 8px;
-        box-shadow: 0 10px 24px rgba(0,0,0,0.16);
-        margin-bottom: 16px;
-    }}
-
-    /* Texte sidebar */
     section[data-testid="stSidebar"] p,
     section[data-testid="stSidebar"] span,
     section[data-testid="stSidebar"] label {{
@@ -135,7 +124,6 @@ st.markdown(
         font-weight: 650;
     }}
 
-    /* Radio group : menu sous forme de pills */
     section[data-testid="stSidebar"] div[role="radiogroup"] {{
         margin-top: 6px;
     }}
@@ -156,7 +144,6 @@ st.markdown(
         transform: translateX(3px);
     }}
 
-    /* Élément sélectionné */
     section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {{
         background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(235,250,253,0.96));
         border: 1px solid rgba(255,255,255,0.95);
@@ -171,19 +158,16 @@ st.markdown(
         font-weight: 850 !important;
     }}
 
-    /* Couleur du bouton radio */
     section[data-testid="stSidebar"] input[type="radio"] {{
         accent-color: var(--ecole-secondary);
     }}
 
-    /* Séparateur sidebar */
     section[data-testid="stSidebar"] hr {{
         border-color: rgba(255,255,255,0.20);
         margin-top: 18px;
         margin-bottom: 18px;
     }}
 
-    /* Progression sidebar */
     section[data-testid="stSidebar"] .stProgress > div > div {{
         background-color: rgba(255,255,255,0.23) !important;
         border-radius: 999px;
@@ -198,6 +182,34 @@ st.markdown(
     section[data-testid="stSidebar"] .stCaptionContainer,
     section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{
         color: rgba(255,255,255,0.75) !important;
+    }}
+
+    /* =====================================================
+       SVG icons
+    ===================================================== */
+    .svg-icon {{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: -4px;
+        margin-right: 8px;
+        color: var(--ecole-primary);
+    }}
+
+    .svg-icon-white {{
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        vertical-align: -5px;
+        margin-right: 8px;
+        color: white;
+    }}
+
+    .svg-icon-large {{
+        width: 34px;
+        height: 34px;
+        display: inline-block;
+        color: var(--ecole-primary);
     }}
 
     /* =====================================================
@@ -217,7 +229,6 @@ st.markdown(
         font-weight: 750;
         margin-top: 8px;
     }}
-
 
     .hero-title {{
         font-size: 36px;
@@ -436,8 +447,7 @@ st.markdown(
     }}
 
     .kpi-icon {{
-        font-size: 31px;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
     }}
 
     .kpi-value {{
@@ -495,22 +505,32 @@ st.markdown(
     }}
 
     /* =====================================================
-       Bouton
+       Bouton HTML personnalisé
     ===================================================== */
-    div[data-testid="stLinkButton"] a {{
-        background: linear-gradient(90deg, var(--ecole-primary), var(--ecole-secondary)) !important;
+    .custom-link-button {{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        background: linear-gradient(90deg, var(--ecole-primary), var(--ecole-secondary));
         color: white !important;
-        border-radius: 15px !important;
-        border: none !important;
-        font-weight: 850 !important;
-        font-size: 18px !important;
-        padding: 0.9rem 1rem !important;
+        text-decoration: none !important;
+        border-radius: 15px;
+        border: none;
+        font-weight: 850;
+        font-size: 18px;
+        padding: 0.95rem 1rem;
         box-shadow: 0 12px 25px rgba(49,149,168,0.26);
+        transition: all 0.22s ease-in-out;
     }}
 
-    div[data-testid="stLinkButton"] a:hover {{
+    .custom-link-button:hover {{
         transform: translateY(-2px);
         box-shadow: 0 16px 32px rgba(49,149,168,0.35);
+        color: white !important;
+        text-decoration: none !important;
     }}
 
     .footer {{
@@ -541,6 +561,173 @@ st.markdown(
 )
 
 # =====================================================
+# Icônes SVG
+# =====================================================
+def svg_icon(name, large=False, white=False):
+    if large:
+        cls = "svg-icon-large"
+    elif white:
+        cls = "svg-icon-white"
+    else:
+        cls = "svg-icon"
+
+    icons = {
+        "student": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M22 10L12 5 2 10l10 5 10-5z"/>
+<path d="M6 12v5c3 2 9 2 12 0v-5"/>
+</svg>
+        """,
+        "user": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M20 21a8 8 0 0 0-16 0"/>
+<circle cx="12" cy="7" r="4"/>
+</svg>
+        """,
+        "building": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 21h18"/>
+<path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+<path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/>
+</svg>
+        """,
+        "handshake": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 12l2 2a3 3 0 0 0 4 0l3-3"/>
+<path d="M7 13l-2-2a3 3 0 0 1 0-4l1-1"/>
+<path d="M17 13l2-2a3 3 0 0 0 0-4l-1-1"/>
+<path d="M9 7h6"/>
+<path d="M3 10l4 4"/>
+<path d="M21 10l-4 4"/>
+</svg>
+        """,
+        "target": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="9"/>
+<circle cx="12" cy="12" r="5"/>
+<circle cx="12" cy="12" r="1"/>
+</svg>
+        """,
+        "data": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="12" cy="5" rx="7" ry="3"/>
+<path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/>
+<path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/>
+</svg>
+        """,
+        "document": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M6 3h9l5 5v13H6z"/>
+<path d="M15 3v5h5"/>
+<path d="M9 13h6"/>
+<path d="M9 17h6"/>
+</svg>
+        """,
+        "alert": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M10.3 4.3 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/>
+<path d="M12 9v4"/>
+<path d="M12 17h.01"/>
+</svg>
+        """,
+        "question": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="9"/>
+<path d="M9.5 9a2.8 2.8 0 1 1 4.6 2.1c-1.2.8-2.1 1.4-2.1 2.9"/>
+<path d="M12 17h.01"/>
+</svg>
+        """,
+        "settings": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="3"/>
+<path d="M12 2v3"/>
+<path d="M12 19v3"/>
+<path d="M4.9 4.9l2.1 2.1"/>
+<path d="M17 17l2.1 2.1"/>
+<path d="M2 12h3"/>
+<path d="M19 12h3"/>
+<path d="M4.9 19.1 7 17"/>
+<path d="M17 7l2.1-2.1"/>
+</svg>
+        """,
+        "search": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<circle cx="11" cy="11" r="7"/>
+<path d="M21 21l-4.3-4.3"/>
+</svg>
+        """,
+        "chart": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 19V5"/>
+<path d="M4 19h16"/>
+<path d="M8 15v-4"/>
+<path d="M12 15V8"/>
+<path d="M16 15v-6"/>
+</svg>
+        """,
+        "upload": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 16V4"/>
+<path d="M7 9l5-5 5 5"/>
+<path d="M4 20h16"/>
+</svg>
+        """,
+        "check": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M20 6 9 17l-5-5"/>
+</svg>
+        """,
+        "clock": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 7v5l3 3"/>
+</svg>
+        """,
+        "rocket": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 3c4 1 7 4 8 8l-6 6-8-8 6-6z"/>
+<path d="M7 17l-4 4"/>
+<path d="M9 15l-3 3"/>
+<path d="M15 9h.01"/>
+</svg>
+        """,
+        "code": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 9l-4 3 4 3"/>
+<path d="M16 9l4 3-4 3"/>
+<path d="M14 5l-4 14"/>
+</svg>
+        """,
+        "link": """
+<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/>
+<path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/>
+</svg>
+        """,
+    }
+
+    return textwrap.dedent(icons.get(name, icons["document"])).replace("{cls}", cls).strip()
+
+
+# =====================================================
 # Fonctions UI
 # =====================================================
 def clean_html(content):
@@ -553,6 +740,10 @@ def html(content):
 
 def divider():
     st.divider()
+
+
+def title_with_icon(icon_name, text):
+    return f"{svg_icon(icon_name)}{text}"
 
 
 def page_title(title, subtitle=None):
@@ -587,11 +778,11 @@ def card(title, body, css_class="card"):
     )
 
 
-def kpi_card(value, label, icon):
+def kpi_card(value, label, icon_name):
     html(
         f"""
 <div class="kpi-card">
-    <div class="kpi-icon">{icon}</div>
+    <div class="kpi-icon">{svg_icon(icon_name, large=True)}</div>
     <div class="kpi-value">{value}</div>
     <div class="kpi-label">{label}</div>
 </div>
@@ -615,25 +806,18 @@ def footer():
     html(
         f"""
 <div class="footer">
-    🎓 Soutenance de stage — {NOM_ETUDIANTE} — {ENTREPRISE}
+    Soutenance de stage — {NOM_ETUDIANTE} — {ENTREPRISE}
 </div>
         """
     )
 
 
-def display_sidebar_logo():
-    if LOGO_ECOLE.exists():
-        st.sidebar.image(str(LOGO_ECOLE), width=120)
-    else:
-        st.sidebar.caption("Logo école non trouvé")
-
-
 def display_home_logos():
-    col_logo_ecole, col_center, col_logo_thuasne = st.columns([1.25, 3.7, 1.25])
+    col_logo_ecole, col_center, col_logo_thuasne = st.columns([1.2, 4, 1.2])
 
     with col_logo_ecole:
         if LOGO_ECOLE.exists():
-            st.image(str(LOGO_ECOLE), width=240)
+            st.image(str(LOGO_ECOLE), width=180)
         else:
             st.caption("Logo école non trouvé")
 
@@ -641,16 +825,27 @@ def display_home_logos():
         html(
             f"""
 <div class="top-pill">
-    🎓 Soutenance de stage · {FORMATION}
+    {svg_icon("student")}Soutenance de stage · {FORMATION}
 </div>
             """
         )
 
     with col_logo_thuasne:
         if LOGO_THUASNE.exists():
-            st.image(str(LOGO_THUASNE), width=170)
+            st.image(str(LOGO_THUASNE), width=160)
         else:
             st.caption("Logo Thuasne non trouvé")
+
+
+def custom_link_button(label, url, icon_name="link"):
+    html(
+        f"""
+<a class="custom-link-button" href="{url}" target="_blank" rel="noopener noreferrer">
+    {svg_icon(icon_name, white=True)}
+    <span>{label}</span>
+</a>
+        """
+    )
 
 
 # =====================================================
@@ -662,19 +857,18 @@ def page_accueil():
     html(
         """
 <div class="hero-title">
-Optimisation du pilotage de la performance par la Data & la Business Intelligence:
+Optimisation du pilotage de la performance par la Data & la Business Intelligence
 <br>
 <span class="gradient-text">Automatisation du matching client des Tracings US chez Thuasne</span>
 </div>
         """
     )
 
-
     col1, col2 = st.columns(2)
 
     with col1:
         card(
-            "👩‍💻 Présenté par",
+            title_with_icon("user", "Présenté par"),
             f"""
 <p class="info-line"><strong>{NOM_ETUDIANTE}</strong></p>
 <p class="info-line">Année universitaire : <strong>{ANNEE_UNIVERSITAIRE}</strong></p>
@@ -684,7 +878,7 @@ Optimisation du pilotage de la performance par la Data & la Business Intelligenc
 
     with col2:
         card(
-            "🏢 Cadre du stage",
+            title_with_icon("building", "Cadre du stage"),
             f"""
 <p class="info-line">Entreprise : <strong>{ENTREPRISE}</strong></p>
 <p class="info-line">Service : <strong>{SERVICE}</strong></p>
@@ -696,7 +890,7 @@ Optimisation du pilotage de la performance par la Data & la Business Intelligenc
 
     with col3:
         card(
-            "🤝 Encadrement",
+            title_with_icon("handshake", "Encadrement"),
             f"""
 <p class="info-line">Tuteur entreprise : <strong>{TUTEUR_ENTREPRISE}</strong></p>
 <p class="info-line">Tuteur pédagogique : <strong>{TUTEUR_PEDAGOGIQUE}</strong></p>
@@ -705,7 +899,7 @@ Optimisation du pilotage de la performance par la Data & la Business Intelligenc
 
     with col4:
         card(
-            "🎯 Objectif général",
+            title_with_icon("target", "Objectif général"),
             """
 <p>
 Transformer un traitement long et manuel en un processus plus rapide,
@@ -728,7 +922,7 @@ def page_contexte():
 
     with col1:
         card(
-            "🏢 Présentation de Thuasne",
+            title_with_icon("building", "Présentation de Thuasne"),
             """
 <p>
 Thuasne est une entreprise spécialisée dans les dispositifs médicaux :
@@ -744,7 +938,7 @@ pour suivre l’activité, analyser la performance et accompagner la prise de d�
 
     with col2:
         card(
-            "📊 Pôle d’intervention : Data",
+            title_with_icon("data", "Pôle d’intervention : Data"),
             """
 <p>
 Le stage s’inscrit au sein du pôle Data, qui accompagne les équipes métier
@@ -764,7 +958,7 @@ la qualité des données et l’intégration d’outils comme Snowflake, Python 
 
     with col1:
         card(
-            "📌 Contexte métier : les Tracings US",
+            title_with_icon("document", "Contexte métier : les Tracings US"),
             """
 <p>
 Les fichiers Tracings US sont transmis par plusieurs partenaires.
@@ -780,7 +974,7 @@ commerciales et de fiabiliser certains indicateurs utilisés pour le pilotage.
 
     with col2:
         card(
-            "❌ Situation initiale",
+            title_with_icon("alert", "Situation initiale"),
             """
 <ul>
 <li>Attente des fichiers des 4 partenaires avant traitement global</li>
@@ -795,7 +989,7 @@ commerciales et de fiabiliser certains indicateurs utilisés pour le pilotage.
         )
 
     card(
-        "❓ Problématique",
+        title_with_icon("question", "Problématique"),
         """
 <p style="font-size:18px;">
 Comment automatiser et fiabiliser le traitement des Tracings US afin de réduire les délais,
@@ -809,7 +1003,7 @@ limiter les corrections manuelles et fournir une donnée client fiable pour le p
 
     with col1:
         card(
-            "⚙️ Automatiser",
+            title_with_icon("settings", "Automatiser"),
             """
 <p>Permettre le traitement indépendant des fichiers partenaires, sans attendre la réception des quatre fichiers.</p>
             """
@@ -817,7 +1011,7 @@ limiter les corrections manuelles et fournir une donnée client fiable pour le p
 
     with col2:
         card(
-            "🔎 Fiabiliser",
+            title_with_icon("search", "Fiabiliser"),
             """
 <p>Améliorer le matching client et identifier clairement les cas non reconnus ou ambigus.</p>
             """
@@ -825,7 +1019,7 @@ limiter les corrections manuelles et fournir une donnée client fiable pour le p
 
     with col3:
         card(
-            "📊 Exploiter",
+            title_with_icon("chart", "Exploiter"),
             """
 <p>Centraliser les données dans Snowflake et les rendre disponibles pour les analyses BI.</p>
             """
@@ -841,7 +1035,7 @@ def page_solution():
     )
 
     card(
-        "✅ Principe de la solution",
+        title_with_icon("check", "Principe de la solution"),
         """
 <p>
 L’application permet de charger un fichier partenaire, contrôler les données,
@@ -856,7 +1050,7 @@ enrichir le référentiel et sauvegarder les résultats dans Snowflake.
 
     with col1:
         card(
-            "📥 Chargement & contrôle",
+            title_with_icon("upload", "Chargement & contrôle"),
             """
 <p>
 L’utilisatrice charge le fichier dès qu’il est disponible.
@@ -867,7 +1061,7 @@ Le format et les données sont préparés avant traitement.
 
     with col2:
         card(
-            "🔎 Matching client",
+            title_with_icon("search", "Matching client"),
             """
 <p>
 L’application recherche automatiquement le client correspondant
@@ -878,7 +1072,7 @@ L’application recherche automatiquement le client correspondant
 
     with col3:
         card(
-            "🧩 Référentiel enrichi",
+            title_with_icon("data", "Référentiel enrichi"),
             """
 <p>
 Les corrections validées alimentent le référentiel,
@@ -912,16 +1106,16 @@ ce qui réduit progressivement les cas non matchés.
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        card("🐍 Python / Pandas", "<p>Traitement et transformation des données.</p>")
+        card(title_with_icon("code", "Python / Pandas"), "<p>Traitement et transformation des données.</p>")
 
     with col2:
-        card("🌐 Streamlit", "<p>Interface web interactive pour les utilisateurs.</p>")
+        card(title_with_icon("link", "Streamlit"), "<p>Interface web interactive pour les utilisateurs.</p>")
 
     with col3:
-        card("❄️ Snowflake", "<p>Stockage, vues et référentiels.</p>")
+        card(title_with_icon("data", "Snowflake"), "<p>Stockage, vues et référentiels.</p>")
 
     with col4:
-        card("☁️ Azure Function", "<p>Suggestions de matching lorsque nécessaire.</p>")
+        card(title_with_icon("settings", "Azure Function"), "<p>Suggestions de matching lorsque nécessaire.</p>")
 
     footer()
 
@@ -935,16 +1129,16 @@ def page_resultats():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        kpi_card(TEMPS_AVANT, "Temps de traitement initial d’un fichier", "⏱️")
+        kpi_card(TEMPS_AVANT, "Temps de traitement initial d’un fichier", "clock")
 
     with col2:
-        kpi_card(TEMPS_DEBUT, "Temps au début du dispositif", "🚀")
+        kpi_card(TEMPS_DEBUT, "Temps au début du dispositif", "rocket")
 
     with col3:
-        kpi_card(TEMPS_ACTUEL, "Temps observé après enrichissement du référentiel", "✅")
+        kpi_card(TEMPS_ACTUEL, "Temps observé après enrichissement du référentiel", "check")
 
     with col4:
-        kpi_card(TAUX_MATCHING_TEST, "Taux de matching observé sur un fichier test", "🔎")
+        kpi_card(TAUX_MATCHING_TEST, "Taux de matching observé sur un fichier test", "search")
 
     divider()
 
@@ -952,7 +1146,7 @@ def page_resultats():
 
     with col1:
         card(
-            "📈 Avant / Après",
+            title_with_icon("chart", "Avant / Après"),
             """
 <ul>
 <li>Avant : attente des 4 partenaires avant traitement global</li>
@@ -967,7 +1161,7 @@ def page_resultats():
 
     with col2:
         card(
-            "📊 Exemple observé",
+            title_with_icon("data", "Exemple observé"),
             f"""
 <ul>
 <li>{NB_CLIENTS_TEST} identifiants clients analysés</li>
@@ -980,7 +1174,7 @@ def page_resultats():
         )
 
     card(
-        "🎯 Impact métier",
+        title_with_icon("target", "Impact métier"),
         """
 <p>
 Le dispositif améliore la fiabilité du rattachement client, réduit les corrections manuelles
@@ -1001,9 +1195,9 @@ def page_demonstration():
     )
 
     html(
-        """
+        f"""
 <div class="hero-banner">
-<h2>🚀 Démonstration en conditions réelles</h2>
+<h2>{svg_icon("rocket", white=True)}Démonstration en conditions réelles</h2>
 <p>
 Cette partie sera réalisée directement dans l’application.
 L’objectif est de montrer concrètement le traitement d’un fichier,
@@ -1017,7 +1211,7 @@ le matching client et la gestion des cas non reconnus.
 
     with col1:
         card(
-            "Scénario de démonstration",
+            title_with_icon("document", "Scénario de démonstration"),
             """
 <ul>
 <li>Chargement d’un fichier partenaire</li>
@@ -1031,7 +1225,7 @@ le matching client et la gestion des cas non reconnus.
 
     with col2:
         card(
-            "Accès à l’application",
+            title_with_icon("link", "Accès à l’application"),
             """
 <p>
 Le bouton ci-dessous ouvre l’application Tracings US.
@@ -1041,11 +1235,7 @@ L’accès nécessite une authentification Snowflake.
             "accent-card"
         )
 
-        st.link_button(
-            "🚀 Lancer l’application Tracings US",
-            TRACINGS_APP_URL,
-            use_container_width=True
-        )
+        custom_link_button("Lancer l’application Tracings US", TRACINGS_APP_URL, "rocket")
 
     footer()
 
@@ -1060,7 +1250,7 @@ def page_bilan():
 
     with col1:
         card(
-            "✅ Apports du projet",
+            title_with_icon("check", "Apports du projet"),
             """
 <ul>
 <li>Réduction du temps de traitement</li>
@@ -1075,7 +1265,7 @@ def page_bilan():
 
     with col2:
         card(
-            "🔭 Perspectives",
+            title_with_icon("target", "Perspectives"),
             """
 <ul>
 <li>Suivre le taux de matching par partenaire</li>
@@ -1093,7 +1283,7 @@ def page_bilan():
 
     with col1:
         card(
-            "💻 Compétences techniques",
+            title_with_icon("code", "Compétences techniques"),
             """
 <ul>
 <li>Python / Pandas</li>
@@ -1107,7 +1297,7 @@ def page_bilan():
 
     with col2:
         card(
-            "📊 Compétences data",
+            title_with_icon("data", "Compétences data"),
             """
 <ul>
 <li>Qualité des données</li>
@@ -1120,7 +1310,7 @@ def page_bilan():
 
     with col3:
         card(
-            "🤝 Compétences transversales",
+            title_with_icon("handshake", "Compétences transversales"),
             """
 <ul>
 <li>Analyse du besoin</li>
@@ -1142,7 +1332,7 @@ def page_conclusion():
     )
 
     card(
-        "✅ Synthèse",
+        title_with_icon("check", "Synthèse"),
         """
 <p>
 Ce projet a permis de transformer un processus initialement long,
@@ -1162,7 +1352,7 @@ dans Snowflake pour les usages BI.
 
     with col1:
         card(
-            "🎯 Apport métier",
+            title_with_icon("target", "Apport métier"),
             """
 <p>
 Réduction des délais et meilleure fiabilité des données commerciales.
@@ -1172,7 +1362,7 @@ Réduction des délais et meilleure fiabilité des données commerciales.
 
     with col2:
         card(
-            "💻 Apport technique",
+            title_with_icon("code", "Apport technique"),
             """
 <p>
 Développement d’une application data avec Python, Streamlit et Snowflake.
@@ -1182,7 +1372,7 @@ Développement d’une application data avec Python, Streamlit et Snowflake.
 
     with col3:
         card(
-            "📊 Apport décisionnel",
+            title_with_icon("chart", "Apport décisionnel"),
             """
 <p>
 Données plus fiables pour le reporting, les commissions et le pilotage commercial.
@@ -1207,7 +1397,6 @@ Avez-vous des questions ?
 # =====================================================
 # Navigation
 # =====================================================
-
 PAGES = {
     "Accueil": page_accueil,
     "Thuasne & contexte": page_contexte,
