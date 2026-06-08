@@ -946,7 +946,7 @@ dans la collecte, la structuration, la fiabilisation et l’exploitation des don
 </p>
 <p>
 Le pôle intervient sur la Business Intelligence, l’automatisation des traitements,
-la qualité des données et l’intégration d’outils comme Snowflake, Python et Streamlit.
+la qualité des données et l’intégration d’outils comme Snowflake, Qlik, Cognos Analytics, Planning Analytics, CRM, Python et Streamlit.
 </p>
             """,
             "accent-card"
