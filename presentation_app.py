@@ -914,7 +914,7 @@ plus fiable et exploitable pour le pilotage commercial.
 
 def page_contexte():
     page_title(
-        "Thuasne & contexte du projet",
+        "Thuasne & Contexte du projet",
         "Un projet data au service de la fiabilisation des données commerciales."
     )
 
@@ -1122,7 +1122,7 @@ ce qui réduit progressivement les cas non matchés.
 
 def page_resultats():
     page_title(
-        "Résultats & impacts",
+        "Résultats & Impacts",
         "Des gains observés sur le temps de traitement, la qualité du matching et la traçabilité."
     )
 
@@ -1242,7 +1242,7 @@ L’accès nécessite une authentification Snowflake.
 
 def page_bilan():
     page_title(
-        "Bilan & perspectives",
+        "Bilan & Perspectives",
         "Synthèse des apports du projet et pistes d’amélioration."
     )
 
@@ -1290,6 +1290,7 @@ def page_bilan():
 <li>Streamlit</li>
 <li>Snowflake</li>
 <li>SQL</li>
+<li>GitHub</li>
 <li>Traitement Excel</li>
 </ul>
             """
@@ -1399,11 +1400,11 @@ Avez-vous des questions ?
 # =====================================================
 PAGES = {
     "Accueil": page_accueil,
-    "Thuasne & contexte": page_contexte,
+    "Thuasne & Contexte": page_contexte,
     "Solution développée": page_solution,
-    "Résultats & impacts": page_resultats,
+    "Résultats & Impacts": page_resultats,
     "Démonstration": page_demonstration,
-    "Bilan & perspectives": page_bilan,
+    "Bilan & Perspectives": page_bilan,
     "Conclusion": page_conclusion,
 }
 
