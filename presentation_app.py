@@ -992,7 +992,7 @@ commerciales et de fiabiliser certains indicateurs utilisés pour le pilotage.
         title_with_icon("question", "Problématique"),
         """
 <p style="font-size:18px;">
-dans quelle mesure une application Streamlit intégrée à Snowflake permet-elle d’automatiser et de fiabiliser le matching client des 
+Dans quelle mesure une application Streamlit intégrée à Snowflake permet-elle d’automatiser et de fiabiliser le matching client des 
 Tracings US afin d’améliorer le pilotage commercial, la traçabilité des données et l’aide à la décision chez Thuasne ?
 </p>
         """,
